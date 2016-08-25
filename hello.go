@@ -40,7 +40,7 @@ func getInput(tt,lp int) (int, []int){
 		// ll := len(oo)
 		// fmt.Sscanf(text, "%d", ina) 
 		if len(oo)!=lp {
-			fmt.Printf("Entered numbers amount not correct!\n")
+			// fmt.Printf("Entered numbers amount not correct!\n")
 			return 0,nil
 		}
 		ina = getInArray(oo)
@@ -59,14 +59,14 @@ func getInArray(str []string) []int{
 			result[0] = tem
 			return result[0:1]
 		}else{
-			fmt.Printf("Number format not correct: %s\n", str[0])
-			return nil
+			// fmt.Printf("Number format not correct: %s\n", str[0])
+			// return nil
+			log.Fatal(err)
 		}
 	}else{
 		return append(getInArray(str[0:len(str)/2]),getInArray(str[len(str)/2:])...)
 	}
-
-
+	return nil
 }
 func getPow(ar []int) int{
 	if len(ar)<=0 {
@@ -94,6 +94,9 @@ func callForSub(num int){
 			_,arr=getInput(1,subLoop)
 			// fmt.Printf("Sub arrays\n")
 			// fmt.Println(arr)
+			if arr == nil {
+				return
+			}
 			fmt.Println(getPow(arr))
 
 		}else{
